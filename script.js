@@ -1,7 +1,15 @@
+  var $grid;
+
 $(function() {
   console.log("leht on laetud");
 
+
+
   getTweets();
+
+  $grid = $('#feed').isotope({
+    itemSelector: '.item'
+  });
 
 });
 
@@ -23,6 +31,10 @@ var getTweets = function(){
 
 var printTweets = function(ajaxStatuses){
 
+  var items = '';
+
+
+
   //foreach
   $.each(ajaxStatuses, function(index, tweet){
       /*
@@ -32,12 +44,20 @@ var printTweets = function(ajaxStatuses){
           <p class="text"></p>
         </div>
       */
-      var item =  '<div class="item">'+
-                  '<img class="profile-img" src="'+tweet.user.profile_image_url.replace("_normal","")+'" alt="">'+
+      items +=  '<div class="item">'+
+                  '<div class="profile-img" style="background-image: url('+tweet.user.profile_image_url.replace("_normal","")+')"></div>'+
                   '<div class="author">'+tweet.user.name+'</div>'+
                   '<p class="text">'+tweet.text+'</p>'+
                   '</div>';
-      console.log($(item));
+      //console.log($(item));
+
+
   });
+
+  var temp = $(items);
+
+  $grid.prepend(temp)
+       .isotope('prepended', temp)
+       .isotope('layout');
 
 };
