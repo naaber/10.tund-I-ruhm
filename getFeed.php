@@ -48,7 +48,7 @@
 		file_put_contents($file_name, json_encode($o));
 		echo json_encode($o);
 	}else{
-		//echo $data_json;
+		echo $data_json;
 		
 		//var_dump($data->api->statuses[0]->id);
 	}
