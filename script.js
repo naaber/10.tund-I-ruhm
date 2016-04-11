@@ -60,4 +60,9 @@ var printTweets = function(ajaxStatuses){
        .isotope('prepended', temp)
        .isotope('layout');
 
+  window.setTimeout(function(){
+    //getTweets peaks kontrollima ja meeles hoidma, millised tweedid on olemas
+    getTweets();
+  }, 5000);
+
 };
